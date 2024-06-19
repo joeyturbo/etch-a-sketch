@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: salmon;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 960px;
+  width: 960px;
+  /* border: 1px solid red; */
+  background-color: whitesmoke;
+}
+
+.square {
+  flex-basis: 6.25%;
+  /* border: 1px solid black; */
+}
+
+.hovered {
+  background-color: green;
+}
