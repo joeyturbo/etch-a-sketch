@@ -7,9 +7,21 @@
 body {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: salmon;
+}
+
+.btn {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: aqua;
 }
 
 .container {
@@ -17,15 +29,15 @@ body {
   flex-wrap: wrap;
   height: 960px;
   width: 960px;
-  /* border: 1px solid red; */
+  border: 1px solid red;
   background-color: whitesmoke;
 }
 
 .square {
-  flex-basis: 6.25%;
-  /* border: 1px solid black; */
+  /* flex-basis: 6.25%; */
+  border: 1px solid black;
 }
 
 .hovered {
-  background-color: green;
+  background-color: black;
 }
