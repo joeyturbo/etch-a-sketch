@@ -1,11 +1,23 @@
 
-defaultGridSize = 256;
+
 const container = document.querySelector('.container');
 const gridSquare = document.querySelectorAll('.square');
 const button = document.querySelector('#gridBtn');
 
+function randomColorGenerator(min=0, max=255) {
+  let rgbArray = [];
+  for (i = 1; i <= 3; i++) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    rgbArray.push(Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled));
+  }
+  return `rgb(${rgbArray[0]}, ${rgbArray[1]}, ${rgbArray[2]})`;
+}
+
 function createNewGrid(gridSize) {
+  // calculate total grid size
   const gridTotal = gridSize**2;
+  // create squares with class/ids, flex-basis, append to container, add event listener
   for (i = 1; i <= gridTotal; i++) {
     const square = document.createElement('div');
     square.setAttribute('class', 'square');
@@ -13,20 +25,27 @@ function createNewGrid(gridSize) {
     square.style.flexBasis = `${100 / gridSize}%`;
     container.appendChild(square);
     square.addEventListener('mouseover', () => {
-      square.classList.add('hovered');
+      // square.classList.add('hovered');
+      square.style.backgroundColor = randomColorGenerator();
     })
   } 
 }
 
+// event listener for reset button
 button.addEventListener('click', () => {
   container.innerHTML = '';
   let newGridSize = prompt('Please enter the grid size you want (must be under 100):');
+  console.log(newGridSize)
   if (newGridSize > 100) {
-    newGridSize = alert(`${newGridSize} is over 100. Try again!`)
+    alert(`${newGridSize} is over 100. Try again!`)
+    createNewGrid(16);
+  } else if (newGridSize === '') {
+    alert('Please enter a valid number between 1 and 100');
     createNewGrid(16);
   } else {
     createNewGrid(newGridSize);
   }
 })
 
+// loads default 16x16 grid
 window.addEventListener('load', createNewGrid(16));
